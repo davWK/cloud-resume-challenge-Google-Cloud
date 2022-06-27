@@ -28,14 +28,10 @@ def saveCount(count):
 
 @functions_framework.http
 def get_visitor_number(request):
-    if request.method == "GET":
-        count = getCount()
-        return jsonify({'count': count})
-
-    elif request.method == "POST":
+    if request.method == "GET" or request.method ==  "POST":
         count = getCount() + 1
-        #count = count + 1
         saveCount(count)
         return jsonify({'count': count})
+
     else:
         return "Method not allowed ", 401
