@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["https://www.davidwoglo.me"],
+    "responseHeader": ["Content-Type"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]
