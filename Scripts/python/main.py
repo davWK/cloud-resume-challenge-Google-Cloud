@@ -30,20 +30,12 @@ def saveCount(count):
 
 @functions_framework.http
 def get_visitor_number(request):
-    headers = {
-        'Access-Control-Allow-Origin': '*'
-    }
 
     if request.method == "GET" or request.method ==  "POST":
-        headers = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Max-Age': '3600'
-        }
         count = getCount() + 1
         saveCount(count)
-        return jsonify({'count': count})
+        return jsonify({'count': count}).headers.add("Access-Control-Allow-Origin", "*")
+
 
     else:
         return "Method not allowed ", 401
