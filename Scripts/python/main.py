@@ -34,7 +34,10 @@ def get_visitor_number(request):
     if request.method == "GET" or request.method ==  "POST":
         count = getCount() + 1
         saveCount(count)
-        return jsonify({'count': count}).headers.add("Access-Control-Allow-Origin", "*")
+        response =  jsonify({'count': count})
+        response.headers.set('Access-Control-Allow-Origin', '*')
+        response.headers.set('Access-Control-Allow-Methods', 'GET, POST')
+        return response
 
 
     else:
