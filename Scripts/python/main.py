@@ -4,9 +4,9 @@ import functions_framework
 from flask import jsonify
 from google.cloud import firestore
 
-PROJECT='PROJECT-ID'
-VISITORS_COLLECTION=u'cloud-resume-challenge' # que veut dire le u
-COUNTER_DOCUMENT=u'visitors-count'
+PROJECT = 'PROJECT-ID'
+VISITORS_COLLECTION = u'cloud-resume-challenge'  # que veut dire le u
+COUNTER_DOCUMENT = u'visitors-count'
 
 
 def getCount():
@@ -30,15 +30,13 @@ def saveCount(count):
 
 @functions_framework.http
 def get_visitor_number(request):
-
-    if request.method == "GET" or request.method ==  "POST":
+    if request.method == "GET" or request.method == "POST":
         count = getCount() + 1
         saveCount(count)
-        response =  jsonify({'count': count})
+        response = jsonify({'count': count})
         response.headers.set('Access-Control-Allow-Origin', '*')
         response.headers.set('Access-Control-Allow-Methods', 'GET, POST')
         return response
-
 
     else:
         return "Method not allowed ", 401
