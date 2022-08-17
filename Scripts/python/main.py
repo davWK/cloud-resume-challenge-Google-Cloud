@@ -4,7 +4,7 @@ import functions_framework
 from flask import jsonify
 from google.cloud import firestore
 
-PROJECT='alilikpo-228'
+PROJECT='PROJECT-ID'
 VISITORS_COLLECTION=u'cloud-resume-challenge' # que veut dire le u
 COUNTER_DOCUMENT=u'visitors-count'
 
